@@ -1,0 +1,109 @@
+/*
+    This is a sample style sheet
+    please insert your css code here and click on "Convert" button.
+
+    if you want to see how ıt works, just press "Convert" button.
+
+    @copyright 2018 Daskhat
+    @author Foad Tahmasebi
+*/
+/* Directions */
+body {
+	direction : ltr;
+}
+
+/* Floats */
+.left {
+	float : left
+}
+
+.right {
+	float : right
+}
+
+/* Text Aaligns */
+#text-right {
+	text-align : right;
+}
+
+/* Image Position */
+.background{
+	background: lightblue url("img_tree.gif") no-repeat 10% 6% ;
+}
+
+.background2{
+	background: lightblue url("img_car.gif") no-repeat fixed left 20px top 300px /50px 100px ;
+}
+.background3{
+	background-position: left ;
+}
+.background4{
+	background-position: 600px top;
+}
+.background5{
+	background-position-x: 60%; /*IE 8*/
+}
+
+/* Borders */
+.borders {
+	border : 1px solid #CCC;
+
+}
+
+.borders-detailed {
+	border-bottom-right-radius : 3px;
+	border-right-width         : 1px;
+	border-right-color         : #DDD;
+	border-right-style         : dashed;
+}
+
+.border-left {
+	border-left : 1px solid #CCC
+}
+
+/* Margin and Padding */
+.margin-padding {
+	margin  : 10px 20px 30px 40px;
+	padding : 10px 20px 30px 40px
+}
+
+.margin-padding-left-right {
+	margin-left   : 10px;
+	margin-right  : 20px;
+	padding-right : 20px;
+}
+
+/* Align */
+#right-align {
+	position : absolute;
+	right    : 0;
+}
+
+#left-align {
+	position : absolute;
+	left     : 0;
+}
+
+/* Clear */
+.clear {
+	clear : left
+}
+
+/* break */
+.break-after {
+	break-after : left;
+}
+
+/* Caption Side*/
+
+.caption-side {
+	caption-side : left; /* I know, it isn't standard since CSS 2.1 */
+}
+
+/* Media */
+@media only screen and (min-width : 768px) {
+	.single.logged-in #main .type-course header h1 {
+		margin-left  : 150px;
+		margin-right : auto;
+	}
+}

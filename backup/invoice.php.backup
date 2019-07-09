@@ -1,0 +1,332 @@
+<?php
+session_start();
+if($_SESSION['is_login'] != True){
+    header("Location: login.php");
+    //302/301 Redirection
+}
+$pageId = "CUstomer Invoice"; 
+require("includes/head.php"); /* Head */
+$_SESSION['inv_row'] = "";
+?>
+
+
+
+<body id="page-top">
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <a class="navbar-brand mr-1" href="index.php"></a>
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
+
+  <?php
+  require("includes/navbar-search.php"); /* Nav Bar Search */
+  require("includes/navbar.php"); /* Nav Bar  */
+  ?>
+  </nav>
+
+<div id="wrapper">
+
+  <?php
+    require("includes/sidebar.php"); /* Sidebar */
+  ?>
+
+  <div id="content-wrapper">
+    <div class="container-fluid">
+
+      <!-- Breadcrumbs-->
+  <!--<ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.php">داشبورد</a>
+        </li>
+        <li class="breadcrumb-item active">Blank Page
+        </li>
+      </ol> -->
+
+
+
+<div> <!-- Main Invoice -->
+
+  <div id="invoice">
+	
+  
+    <form style=" /*background: rgba(108, 117, 125, 0.13);*/
+                  height: 300px;
+                  padding: 20px;
+                  margin-bottom: 20px;
+                  border-radius: 20px;
+                  border: rgb(163, 163, 163) solid;
+                  border-width: 1px;"
+            name="regCustomer">
+
+      <div id="customer-info"> 
+      <div>
+      <h3>اطلاعات مشتری</h3>
+      <hr>
+      </div>      
+      <div class="form-group">
+      <div class="form-row">
+
+
+
+      <div class="col-sm-2">
+        <div id="customer-info-phone" class="form-label-group">
+          <input type="text" class="form-control"  autofocus="autofocus" required="required" id="customer-phone">
+          <label for="doctype">شماره همراه</label>               
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div id="customer-info-name" class="form-label-group">
+          <input type="text" class="form-control"  autofocus="autofocus" id="customer-name">
+          <label for="doctype">نام</label>               
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div id="customer-info-familyname" class="form-label-group">
+          <input type="text" class="form-control"  autofocus="autofocus" id="customer-fname">
+          <label for="doctype">نام خانوادگی</label>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <div id="customer-info-nid" class="form-label-group">
+          <input type="text" class="form-control" id="customer-nid">
+          <label for="doctype">کد ملی</label>
+        </div>        
+      </div>
+
+      <div class="col-sm-2">
+        <div id="customer-info-supplier" class="form-label-group">
+          <input type="text" class="form-control"  autofocus="autofocus" id="supplier">
+          <label for="doctype">تامین کننده</label>
+        </div>        
+      </div>
+
+      <!--<div >
+        <a href="invoice.php" class="btn btn-primary btn-block">ایجاد</a>
+      </div> -->
+      </div> <!-- /form-row -->
+      </div> <!-- /form-group -->
+      </div> <!-- /id="customer-info" --> 
+
+      <div id="invoice-row"> 
+      <h3>اطلاعات اسناد</h3>
+      <hr>
+
+        <div class="form-group">
+        <div class="form-row">
+
+          <div class="col-md-4">
+            <div id="document" class="form-label-group inv-">
+              <input type="text" name="document" class="form-control"  required="required" autofocus="autofocus" id="search">
+              <label for="document">نام سند</label>
+              <div id="display" class="search-result">
+ 
+                </div>
+            </div>
+                
+          </div>
+          <div class="col-md-auto">
+              <select class="custom-select col-md-auto" name="document-type" id="document-type">
+                <option value="null" selected> نوع مدرک </option>
+                <option value="primary">اصلی</option>
+                <option value="secondry">مجدد</option>
+              </select>
+            </div>
+             
+            <div class="col-md-1">
+              <div id="document-qty" class="form-label-group">
+                <input type="number" name="document-qty"  class="form-control"  autofocus="autofocus">
+                <label for="document-qty">تعداد سند</label>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div id="polomp-qty" class="form-label-group">
+                <input type="number" name="polomp-qty"  class="form-control"  autofocus="autofocus" >
+                <label for="polomp-qty">تعداد پلمپ</label>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div id="paper-qty" class="form-label-group">
+                <input type="number" name="paper-qty"  class="form-control"  autofocus="autofocus" >
+                <label for="paper-qty">تعداد برگ</label>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div id="sure-plus" class="form-label-group">
+                <input type="number" name="sure-plus"  class="form-control"  autofocus="autofocus">
+                <label for="sure-plus">هزینه مازاد</label>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <select class="custom-select col-md-auto" name="stamp-type" id="stamp-type">
+                <option value="null" >مهر</option>
+                <option value="un-official">غیررسمی</option>
+                <option value="M" selected>م</option>
+                <option value="M-D">م-د</option>
+                <option value="M-D-KH">م-د-خ</option>
+                <option value="M-D-B">م-د-ب</option>
+                <option value="M-D-B-KH">م-د-ب-خ</option>
+              </select>
+            </div>
+
+            <div class="col-md-auto">
+              <select class="custom-select col-md-auto" name="emergancy-status" id="emergancy-status">
+                <option value="emergance">فوری</option>
+                <option value="not-emergance" selected>عادی</option>
+              </select>
+            </div>
+
+            <div class="col-md-auto">
+              <select class="custom-select col-md-auto" name="service" id="service">
+                <option value="null" selected>خدمات</option>
+                <option value="must-scanned">اسکن</option>
+              </select>
+            </div>
+
+            <div class="col-md-1">
+              <div id="price" class="form-label-group">
+                <input type="number" name="price"  class="form-control"  required="required" autofocus="autofocus">
+                <label for="price">تعرفه</label>
+                
+              </div>
+            </div><!-- /form-group -->
+          </div> <!-- /form-row -->
+          </div><!-- /First Line --> 
+
+          <!-- <div class="form-group">
+          <div class="form-row">
+
+            <div class="col-md-auto "> <!-- offset-lg-5 
+              <select class="custom-select col-md-auto" name="translation-language" id="translation-language">
+                <option value="null"> زبان ترجمه </option>
+                <option value="english" selected>انگلیسی</option>
+                <option value="dutch">آلمانی</option>
+                <option value="spanish">اسپانیایی</option>
+                <option value="french">فرانسه</option>
+                <option value="arabic">عربی</option>
+                <option value="turkish">ترکی</option>
+                <option value="chinese">چینی</option>
+                <option value="korean">کره ای</option>
+              </select>
+            </div>
+            </div> <!-- form-row Close
+          </div> <!-- form-group Close-->
+        </div> <!-- /id="invoice-row" --> 
+        <div class="btn-group btn-group-justified">
+  <a href="#" class="btn btn-success">اضافه</a>
+  <a href="#" class="btn btn-danger">حذف</a>
+</div>
+        <div class="form-row ">
+        <div class="col-md-1 ">
+          <button type="button" onclick="calculatePrice()" class="btn btn-success btn-block" id="plus">اضافه
+        </div> 
+        <div class="col-md-1 ">
+          <button type="button" onclick="calculatePrice()" class="btn btn-danger btn-block" id="remove">حذف
+        </div>
+        </div>
+    </form>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="form-row ">
+    <div class="col-md-1 offset-lg-10 ">
+      <button type="button" onclick="calculatePrice()" class="btn btn-primary btn-block" id="back">قبلی
+    </div>
+    <div class="col-md-1 ">
+      <button type="button" onclick="calculatePrice()" class="btn btn-primary btn-block" id="next">بعدی
+    </div>
+  </div>
+</div>
+       
+        
+<h1>فاکتور</h1>
+<h2>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "GET"){
+  echo "USRL Get";
+}
+//if(isset($_SESSION['inv-row'])) {
+//    $printRow = json_decode($_SESSION['inv-row']);
+//    echo $printRow; 
+//}
+?> 
+
+
+</h2>
+  <hr>
+
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Data Table Example</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="invoice-tb" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>نام سند</th>
+                    <th>تعداد سند</th>
+                    <th>توضیحات</th>
+                    <th>نوع مهر</th>
+                    <th>تعرفه پایه</th>
+                    <th>جمع</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>اوراق محضری (تعهدنامه، رضایت­نامه، استشهادنامه، اقرار نامه) (هر صفحه)</td>
+                    <td>۵</td>
+                    <td>نسخه اصلی</td>
+                    <td>م - د - گ</td>
+                    <td>۷۵۰،۰۰۰</td>
+                    <td>۳،۵۷۰،۰۰۰</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+      </div>
+      <?php
+      /* /.container-fluid */
+      require("includes/footer.php"); /* Footer */
+      require("includes/scroll-to-top.php"); /* Scroll to Top Button */
+      require("includes/logout.php"); /* Logout Modal */
+      ?>
+
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
+
+  <!-- Live Search  scripts for Invoice-->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/doctypelivesearch.js"></script>
+  <script type="text/javascript" src="/js/docprice.js"></script>
+  <script type="text/javascript" src="/js/invoicetab.js"></script>
+  <script type="text/javascript" src="/js/formcontrol.js"></script>
+</body>
+
+</html>
+

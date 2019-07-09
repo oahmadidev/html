@@ -1,0 +1,156 @@
+<?php
+session_start();
+if($_SESSION['is_login'] != True){
+    header("Location: login.php");
+    //302/301 Redirection
+}
+$pageId = "Invoice-Customer"; 
+require("includes/head.php"); /* Head */
+?>
+
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="index.php"></a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <?php
+      require("includes/navbar-search.php"); /* Nav Bar Search */
+      require("includes/navbar.php"); /* Nav Bar  */
+
+    ?>
+  </nav>
+
+  <div id="wrapper">
+
+    <?php
+      require("includes/sidebar.php"); /* Sidebar */
+    ?>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.php">داشبورد</a>
+          </li>
+          <li class="breadcrumb-item active">Blank Page</li>
+        </ol>
+
+
+
+ 
+  <!-- Page Content -->
+  <!-- Invoice Information 
+      <div class="card-body">
+      <form>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Person</span>
+    </div>
+    <input type="text" class="form-control" placeholder="First Name">
+    <input type="text" class="form-control" placeholder="Last Name">
+  </div>
+</form>-->
+<h3>اطلاعات مشتری</h3>
+        <hr>
+  <div>
+
+  <form>
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-sm-2">
+
+          <div id="customer-info-phone" class="form-label-group">
+            <input type="text" class="form-control"  autofocus="autofocus" id="customer-phone">
+            <label for="doctype">شماره همراه</label>               
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div id="customer-info-name" class="form-label-group">
+            <input type="text" class="form-control"  autofocus="autofocus" id="customer-name">
+            <label for="doctype">نام</label>               
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div id="customer-info-familyname" class="form-label-group">
+            <input type="text" class="form-control"  autofocus="autofocus" id="customer-fname">
+            <label for="doctype">نام خانوادگی</label>               
+          </div>
+        </div>
+        <div class="col-sm-2">
+                <div id="customer-info-familyname" class="form-label-group">
+                  <input type="text" class="form-control"  autofocus="autofocus" id="customer-fname">
+                  <label for="doctype">کد ملی</label>               
+                </div>
+                
+        </div>
+        <div class="col-sm-2">
+                <div id="customer-info-familyname" class="form-label-group">
+                  <input type="text" class="form-control"  autofocus="autofocus" id="customer-fname">
+                  <label for="doctype">تامین کننده</label>               
+                </div>
+                
+        </div>
+        <div >
+            <a href="invoice.php" class="btn btn-primary btn-block">ایجاد</a>
+          </div>
+        </div>
+
+          
+            </div>
+          </div>
+          <!-- <div >
+            <a href="invoice.php">
+              <input type="submit" class="btn btn-primary btn-block" value="اضافه" >
+            </a>
+          </div> -->
+        </form>
+  </div>
+<hr>
+  <!-- Main Invoice -->
+  
+    
+  <?php
+  /* .container-fluid */
+    require("includes/footer.php"); /* Footer */
+    require("includes/scroll-to-top.php"); /* Scroll to Top Button */
+    require("includes/logout.php"); /* Logout Modal */
+  ?>
+
+
+  </div>
+    <!-- /.content-wrapper -->
+
+</div>
+  <!-- /#wrapper -->
+
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
+
+  <!-- Live Search  scripts for Invoice-->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/livesearch.js"></script>
+
+</body>
+
+</html>
