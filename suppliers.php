@@ -30,6 +30,65 @@ $_SESSION['inv_row'] = "";
 
   <div id="content-wrapper">
     <div class="container-fluid">
+      
+      <div>     
+        <h3>ایجاد تامین کننده</h3>
+        <hr>
+      </div> 
+      
+      <div id"customerCreator">
+        <form>
+          <div class="col-sm-2">
+            <div class="form-label-group">
+              <input type="text" class="form-control"  autofocus="autofocus" id="suppliers-name">
+              <label for="suppliers-name">نام تامین کننده</label>               
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-label-group">
+              <input type="text" class="form-control"  autofocus="autofocus" id="suppliers-contact-point">
+              <label for="suppliers-contact-point">مسئول پیگیری</label>               
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-label-group">
+              <input type="text" class="form-control"  autofocus="autofocus" id="suppliers-phone">
+              <label for="suppliers-phone">تلفن</label>               
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-label-group">
+              <input type="text" class="form-control"  autofocus="autofocus" id="suppliers-cell">
+              <label for="suppliers-cell">موبایل</label>               
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-label-group">
+              <select class="custom-select col-md-auto" id="cooperation-kind">
+                <option value="null" selected >نوع همکاری</option>
+                <option value="second-inv" >دو فاکتوری</option>
+                <option value="10percent">۱۰٪</option>
+                <option value="15percent">۱۵٪</option>
+                <option value="20percent">۲۰٪</option>
+                <option value="other">سایر</option>
+              </select>     
+            </div>
+          </div>  
+          <div class="col-sm-2">
+            <div class="form-label-group">
+              <input type="text" class="form-control"  autofocus="autofocus" id="suppliers-address">
+              <label for="suppliers-address">آدرس</label>               
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-label-group">
+              <input type="text" class="form-control"  autofocus="autofocus" id="suppliers-map-link">
+              <label for="suppliers-map-link">لینک برروی نقشه گوگل</label>               
+            </div>
+          </div>
+
+        </form>
+      </div>  
 
    
   </div>
